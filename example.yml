@@ -1,0 +1,31 @@
+version: '3.7'	
+services:
+  myapp:
+    image: "myapp:latest"
+    ports:
+      - "8080:8080"
+      - "9443:9443"
+    volumes:
+      - volume1:/etc/app_config/ 
+      - volume2:/var/lib/app_data/
+    environment:
+      JAVA_HOME: /var/lib/java
+    networks:
+      - mynetwork
+
+  mynewapp:
+    image: "mynewapp:2.5"
+    ports:
+      - "9000:8080"
+    volumes:
+      - volume3:/opt/mynewapp/ 
+    networks:
+      - mynetwork
+
+volumes:
+  volume1:
+  volume2:
+  volume3:
+
+networks:
+  mynetwork:
